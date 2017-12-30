@@ -34,6 +34,7 @@ app.get('/api/imagesearch/:searchTerm*', function(req, res, next){
     if(err){
       res.send('error saving to database; '+err)
     }
+    res.send(url+query+offset);
   });
   // call googleapis
   // request(url+query+offset, function(err, resp, body){
