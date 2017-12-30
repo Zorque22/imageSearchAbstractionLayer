@@ -11,7 +11,7 @@ var url = cseUrl+'?key='+cseKey+'&cx='+cseCx+'&searchType=image&q=';
 var query;
 var offset;
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/searchTerms', { useMongoClient: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://zorque:VerySecurePassword@ds235877.mlab.com:35877/heroku_hnhx6qcf', { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 app.get('/api/searchHistory', function(req, res){
