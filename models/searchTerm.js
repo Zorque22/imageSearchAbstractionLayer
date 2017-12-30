@@ -6,6 +6,6 @@ const searchTermSchema = new Schema({
   searchDate: Date
 });
 
-const SearchTermModel = mongoose.model('searchTerm', searchTermSchema);
+const SearchTerm = mongoose.model('searchTerm', searchTermSchema);
 
-module.exports = SearchTermModel;
+module.exports = SearchTerm;
