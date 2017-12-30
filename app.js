@@ -36,21 +36,21 @@ app.get('/api/imagesearch/:searchTerm*', function(req, res, next){
     }
   });
   // call googleapis
-  request(url+query+offset, function(err, resp, body){
-    if(err){
-      res.send(err);
-    }
-    var data = JSON.parse(body);
-    var items = data.items.map(function(item){
-      return {
-          url: item.link,
-          snippet: item.snippet,
-          thumbnail: item.image.thumbnailLink,
-          context: item.image.contextLink
-      };
-    });
-    res.send(items);
-  })
+  // request(url+query+offset, function(err, resp, body){
+  //   if(err){
+  //     res.send(err);
+  //   }
+  //   var data = JSON.parse(body);
+  //   var items = data.items.map(function(item){
+  //     return {
+  //         url: item.link,
+  //         snippet: item.snippet,
+  //         thumbnail: item.image.thumbnailLink,
+  //         context: item.image.contextLink
+  //     };
+  //   });
+  //   res.send(items);
+  // })
 
 });
 
