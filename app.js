@@ -13,11 +13,10 @@ var offset;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://zorque:VerySecurePassword@ds235877.mlab.com:35877/heroku_hnhx6qcf', { useMongoClient: true });
 mongoose.Promise = global.Promise;
-app.get('/', function(req,res){
-  res.send('boe');
-})
+
+app.use(express.static('public'));
 app.get('/api/searchHistory', function(req, res){
-  searchTerm.find().sort('-searchDate').exec(function(err, data) {
+  searchTerm.find({},{_id:0, searchTerm:1, searchDate:1}).sort('-searchDate').exec(function(err, data) {
     res.json(data);
   });
 });
@@ -36,7 +35,6 @@ app.get('/api/imagesearch/:searchTerm*', function(req, res, next){
     if(err){
       res.send('error saving to database; '+err)
     }
-    // res.send(url+query+offset);
   });
   // call googleapis
   request(url+query+offset, function(err, resp, body){

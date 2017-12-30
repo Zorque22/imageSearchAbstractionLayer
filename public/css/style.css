@@ -1,0 +1,21 @@
+body{
+  font-family: arial;
+}
+h3{
+  font-weight:normal;
+  margin-left:20px;
+}
+#userStories p{
+  margin-left: 40px;
+}
+#examples p{
+  color:red;
+  font-size:0.9em;
+}
+#examples li{
+  color:red;
+  font-size:0.9em;
+}
+h2{
+  font-weight: normal;
+}
