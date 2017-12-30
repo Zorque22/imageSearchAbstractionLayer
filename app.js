@@ -13,7 +13,9 @@ var offset;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://zorque:VerySecurePassword@ds235877.mlab.com:35877/heroku_hnhx6qcf', { useMongoClient: true });
 mongoose.Promise = global.Promise;
-
+app.get('/', function(req,res){
+  res.send('boe');
+})
 app.get('/api/searchHistory', function(req, res){
   searchTerm.find().sort('-searchDate').exec(function(err, data) {
     res.json(data);
@@ -37,21 +39,21 @@ app.get('/api/imagesearch/:searchTerm*', function(req, res, next){
     res.send(url+query+offset);
   });
   // call googleapis
-  // request(url+query+offset, function(err, resp, body){
-  //   if(err){
-  //     res.send(err);
-  //   }
-  //   var data = JSON.parse(body);
-  //   var items = data.items.map(function(item){
-  //     return {
-  //         url: item.link,
-  //         snippet: item.snippet,
-  //         thumbnail: item.image.thumbnailLink,
-  //         context: item.image.contextLink
-  //     };
-  //   });
-  //   res.send(items);
-  // })
+  request(url+query+offset, function(err, resp, body){
+    if(err){
+      res.send(err);
+    }
+    var data = JSON.parse(body);
+    var items = data.items.map(function(item){
+      return {
+          url: item.link,
+          snippet: item.snippet,
+          thumbnail: item.image.thumbnailLink,
+          context: item.image.contextLink
+      };
+    });
+    res.send(items);
+  })
 
 });
 
